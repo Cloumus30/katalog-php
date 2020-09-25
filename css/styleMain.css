@@ -147,6 +147,7 @@ li {
 
 .cards div img {
     max-width: 100%;
+    max-height: 200px;
 }
 
 .cards-img {
@@ -162,7 +163,8 @@ li {
 }
 
 .cards {
-    width: 400px;
+    width: 200px;
+    height: fit-content;
     font-family: cursive;
     /* border: solid 4px blue; */
     box-shadow: 0px 4px 16px 0px rgba(18, 18, 19, 0.479);
@@ -200,6 +202,55 @@ h3 {
     border-radius: 15%;
     padding: 5px;
     margin-left: 15px;
+}
+
+.tableProduct {
+    width: 120%;
+    padding: 0;
+    margin: 0;
+    margin-left: -15px;
+    text-align: center;
+}
+
+.tableProduct th {
+    color: rgba(0, 0, 0, 0.788);
+}
+
+.tableProduct,
+.tableProduct th,
+.tableProduct td {
+    border: 3px solid rgba(47, 2, 248, 0.664);
+}
+
+.tableProduct tbody td:nth-child(8) {
+    padding: 6px;
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0;
+}
+
+.tableProduct tbody td:nth-child(6) {
+    max-width: 200px;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+.tableProduct tr:nth-child(even) {
+    background-color: white;
+}
+
+.tableProduct tr:nth-child(odd) {
+    background-color: #e1e6eb;
+}
+
+.tableProduct th {
+    background-color: white;
+}
+
+td img {
+    width: 100px;
+    margin: -4px;
 }
 
 @keyframes fade {

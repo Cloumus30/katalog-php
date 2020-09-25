@@ -1,21 +1,8 @@
 <?php
 require 'app.php';
-
 $datas = query("SELECT * FROM products");
 
-if (isset($_POST["submit"])) {
-    $notifInsert = insert($_POST);
-    if ($notifInsert > 0) {
-        echo "<script> alert('input berhasil')
-        window.location.href='product.php'
-        </script>";
-    } else {
-        echo "<script> alert('input gagal')</script>";
-        die;
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,54 +57,41 @@ if (isset($_POST["submit"])) {
             </div>
         </div>
         <div class="content">
-            <h3>PRODUCTS</h3>
+            <h3>DATA PRODUCTS ADMIN</h3>
+            <!-- Table Data Product -->
 
-            <!-- cards -->
-            <?php foreach ($datas as $product) : ?>
-                <div class="cards">
-                    <div class="cards-img">
-                        <img src="img/<?= $product['image'] ?>" alt="<?= $product['image'] ?>">
-                    </div>
-                    <p class="title">
-                        <?= $product['name'] ?>
-                    </p>
-                    <p class="priceCard">Harga:Rp <?= number_format($product['price'], 0, "", ".") ?>
-                    </p>
-                    <p class="stock">Stock: <?= $product['stock'] ?></p>
-
-                    <div class="button">
-                        <button class="modalBtn" data-modal-id="<?= $product['id_product'] ?>">Lihat</button>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="backModal">
-                    <div class="modal" id="<?= $product['id_product'] ?>">
-                        <div class="modalImg">
-                            <img src="img/<?= $product['image'] ?>" alt="image">
-                        </div>
-
-                        <div class="modalHead">
-                            <p><?= $product['name'] ?></p>
-                            <!-- <button class="closeModal crossClose">X</button> -->
-                        </div>
-                        <div class="modalContent">
-                            <p class="modalDesc">Deskripsi: <?= $product['descript'] ?></p>
-                        </div>
-                        <div class="modalFooter">
-                            <!-- <button class="buyModal">buy</button> -->
-                            <p><span class="priceModal bg-success"> Harga: Rp <?= number_format($product['price'], 0, "", ".");  ?></span>
-                                <span class="stockModal"> Stock: <?= $product['stock'] ?></span>
-                            </p>
-                            <button class="closeModal" data-modal-close="modal1">Close</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal End -->
-
-            <?php endforeach; ?>
-            <!-- cards end -->
-
+            <table class="tableProduct">
+                <thead>
+                    <th>ID</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Stock</th>
+                    <th>Qty</th>
+                    <th>Deskripsi</th>
+                    <th>Tanggal Input</th>
+                    <th>Gambar</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($datas as $data) : ?>
+                        <tr>
+                            <td><?= $data["id_product"]; ?></td>
+                            <td><?= $data["name"]; ?></td>
+                            <td><?= number_format($data["price"], 0, '', '.'); ?></td>
+                            <td><?= number_format($data["stock"], 0, '', '.'); ?></td>
+                            <td><?= $data["qty"]; ?></td>
+                            <td><?= $data["descript"]; ?></td>
+                            <td><?= $data["date"]; ?></td>
+                            <td><img src="img/<?= $data["image"]; ?>" alt="<?= $data["image"]; ?>"></td>
+                            <td>
+                                <button class="btn btn-primary">edit</button>
+                                <button class="btn btn-danger">delete</button>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+            <!-- Table Data Product end -->
 
             <!-- Input Modal -->
             <form action="" method="post">
@@ -189,63 +163,6 @@ if (isset($_POST["submit"])) {
                 </div>
             </form>
             <!-- Input Modal End -->
-
-            <!-- <div class="cards">
-                <div class="cards-img">
-                    <img src="img/IMG-20200907-WA0022.jpg" alt="Gambar Produk">
-                </div>
-                <p class="title">
-                    Jarum Pentul
-                </p>
-                <p class="price">Harga: 25.000</p>
-                <p class="stock">Stock: 20</p>
-
-                <div class="button">
-                    <button><a href="#">Lihat</a></button>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="cards-img">
-                    <img src="img/IMG-20200907-WA0022.jpg" alt="Gambar Produk">
-                </div>
-                <p class="title">
-                    Jarum Pentul
-                </p>
-                <p class="price">Harga: 25.000</p>
-                <p class="stock">Stock: 20</p>
-
-                <div class="button">
-                    <button><a href="#">Lihat</a></button>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="cards-img">
-                    <img src="img/IMG-20200907-WA0022.jpg" alt="Gambar Produk">
-                </div>
-                <p class="title">
-                    Jarum Pentul
-                </p>
-                <p class="price">Harga: 25.000</p>
-                <p class="stock">Stock: 20</p>
-
-                <div class="button">
-                    <button><a href="#">Lihat</a></button>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="cards-img">
-                    <img src="img/IMG-20200907-WA0022.jpg" alt="Gambar Produk">
-                </div>
-                <p class="title">
-                    Jarum Pentul
-                </p>
-                <p class="price">Harga: 25.000</p>
-                <p class="stock">Stock: 20</p>
-
-                <div class="button">
-                    <button><a href="#">Lihat</a></button>
-                </div>
-            </div> -->
         </div>
     </div>
 
