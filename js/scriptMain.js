@@ -41,3 +41,50 @@ function layoutFunc() {
     arrow.classList.toggle("rotate");
     arrow.classList.toggle("reverseRotate");
 }
+
+
+
+// AJAX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const deleteBtn = document.querySelectorAll('.deleteBtn');
+// deleteBtn.forEach(deleteData);
+
+// function deleteData(item) {
+//     const imageDelete = item.previousElementSibling;
+//     const idDelete = imageDelete.previousElementSibling;
+//     item.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         // console.log(imageDelete);
+//         const imageValue = imageDelete.getAttribute('value');
+//         const idValue = idDelete.getAttribute('value');
+//         confirm('harpus?');
+//         if (confirm) {
+//             let xhr = new XMLHttpRequest();
+//             xhr.open("POST", "app.php", true);
+//             let params = `id=${idValue}&image=${imageValue}`;
+//             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//             xhr.onload = function () {
+//                 if (this.status == 200 & this.readyState == 4) {
+//                     console.log(this.responseText);
+//                 }
+//             }
+//             xhr.send(params);
+//         }
+//     })
+// }

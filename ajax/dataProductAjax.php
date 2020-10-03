@@ -7,11 +7,11 @@ if (isset($_REQUEST["name"])) {
     $notifInsert = insert($_REQUEST);
     if ($notifInsert > 0) {
         echo "<script> alert('input berhasil')
-        window.location.href='dataProduct.php'
+        window.location.href='dataProductAjax.php'
         </script>";
     } else {
         echo "<script> alert('input gagal')
-        window.location.href='dataProduct.php'
+        window.location.href='dataProductAjax.php'
         </script>";
         die;
     }
@@ -21,13 +21,9 @@ if (isset($_POST["update"])) {
     $notifUpdate = update($_POST);
     if ($notifUpdate > 0) {
         echo "<script> alert('update berhasil')
-        window.location.href='dataProduct.php'
+        window.location.href='dataProductAjax.php'
         </script>";
-    } elseif ($notifUpdate == 0) {
-        echo "<script> alert('Tidak ada Update')
-        window.location.href='dataProduct.php'
-        </script>";
-    } {
+    } else {
         echo "<script> alert('update gagal')</script>";
         echo mysqli_error($conn);
         die;
@@ -38,11 +34,11 @@ if (isset($_POST["delete"])) {
     $notifDelete  = delete($_POST);
     if ($notifDelete > 0) {
         echo "<script> alert('hapus berhasil')
-        window.location.href='dataProduct.php'
+        window.location.href='dataProductAjax.php'
         </script>";
     } else {
         echo "<script> alert('delete gagal')
-        window.location.href='dataProduct.php'
+        window.location.href='dataProductAjax.php'
         </script>";
     }
 }
@@ -61,7 +57,6 @@ if (isset($_POST["delete"])) {
 </head>
 
 <body>
-
     <nav class="nav-container bg-primary text-light">
         <span class="arrow reverseRotate" title="Categories">&#8593</span>
         <h1>Cloudias</h1>
@@ -94,11 +89,11 @@ if (isset($_POST["delete"])) {
             <br>
             <h5>Admin:</h5>
             <div class="category">
-                <a href="dataProduct.php">-Data Produk</a>
+                <a href="dataProductAjax.php">-Data Produk</a>
                 <a href="#">-Coming soon</a>
             </div>
         </div>
-        <div class="content" style="padding: 0;">
+        <div class="content" style="padding: 0;" id="idContent">
             <h3>DATA PRODUCTS ADMIN</h3>
             <!-- Table Data Product -->
 
@@ -113,7 +108,7 @@ if (isset($_POST["delete"])) {
                     <th>Gambar</th>
                     <th>Action</th>
                 </thead>
-                <tbody>
+                <tbody id="tbodyAjax">
                     <?php foreach ($datas as $data) : ?>
                         <tr>
                             <td><?= $data["id_product"]; ?></td>
@@ -191,14 +186,14 @@ if (isset($_POST["delete"])) {
                                     </div>
                                 </form>
                                 <!-- edit modal -->
-                                <form action="" method="POST">
-                                    <input type="hidden" class="idDelete" value="<?= $data["id_product"] ?>" name="idDelete">
-                                    <input type="hidden" class="imageDelete" value="<?= $data["image"] ?>" name="image">
-                                    <button class="btn btn-danger deleteBtn" name="delete" type="submit">delete</button>
-                                </form>
+                                <!-- <form action="" method="POST"> -->
+                                <input type="hidden" class="idDelete" value="<?= $data["id_product"] ?>" name="idDelete">
+                                <input type="hidden" class="imageDelete" value="<?= $data["image"] ?>" name="image">
+                                <button class="btn btn-danger deleteBtn" name="delete" type="submit">delete</button>
+                                <!-- </form> -->
                             </td>
                         </tr>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <!-- Table Data Product end -->

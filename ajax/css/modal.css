@@ -1,0 +1,175 @@
+.backModal {
+    width: 100%;
+    height: 100%;
+    border: black 2px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.164);
+    padding-top: 0%;
+    display: none;
+    z-index: 10;
+}
+
+.modal {
+    max-width: 800px;
+    max-height: 700px;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 35% auto;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas:
+        'image header'
+        'image content'
+        'image footer'
+    ;
+    grid-column-gap: 35px;
+    display: none;
+    box-sizing: border-box;
+    padding: 25px;
+    background-color: white;
+    animation: fade 1s forwards;
+    overflow: auto;
+    box-shadow: 0px 4px 16px 0px rgba(18, 18, 19, 0.479);
+    position: absolute;
+    right: auto;
+    top: 3%;
+    left: 25%;
+}
+
+.modalImg {
+    /* width: 400px; */
+    /* height: 100%;
+    text-align: center;
+    border: red 1px solid;
+    padding: 0 35px; */
+    grid-area: image;
+    align-self: center;
+    box-shadow: 0px 4px 16px 0px rgba(43, 43, 243, 0.514);
+}
+
+.modalImg img {
+    /* width: 400px;
+    max-height: 400px;
+    padding: 30px 0 0 0; */
+    width: 100%;
+    height: 300px;
+    /* margin-left: 25px; */
+}
+
+/* .modalText {
+    width: 100%;
+} */
+
+.modalHead {
+    background-color: rgba(46, 46, 240, 0.949);
+    /* padding: 20px 0; */
+    width: 100%;
+    height: 100%;
+    color: white;
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.modalBtn {
+    color: white;
+}
+
+.closeModal {
+    color: black;
+    font-weight: bolder;
+    margin: 0 15px;
+    padding: 5px;
+    border-radius: 15%;
+    background-color: rgb(252, 65, 65);
+    color: white;
+}
+
+/* .crossClose {
+    color: white;
+    background-color: rgb(243, 76, 76);
+} */
+
+.modalFooter {
+    background-color: rgb(39, 39, 240);
+    /* padding: 20px 0; */
+    color: white;
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modalFooter p {
+    margin-top: 15px;
+}
+
+.priceModal {
+    color: white;
+    border-radius: 15%;
+    padding: 10px;
+    margin: auto 0 auto 10px;
+    font-weight: bold;
+}
+
+.stockModal {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 10%;
+    font-weight: bolder;
+}
+
+.modalContent {
+    width: 100%;
+    overflow: auto;
+    grid-area: content;
+
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeBack {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width:1100px) {
+    .modal {
+        top: 3%;
+        left: 15%;
+    }
+}
+
+@media only screen and (max-width:846px) {
+    .modal {
+        font-size: 16px;
+        top: 3%;
+        left: 0.5%;
+    }
+}
+
+@media only screen and (max-width:635px) {
+    .modal {
+        font-size: 12px;
+        top: 3%;
+        left: 0.5%;
+    }
+}
